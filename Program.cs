@@ -1,4 +1,5 @@
 using LeaveManagement.Data;
+using LeaveManagement.Services;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -9,6 +10,8 @@ builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlite("Data S
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
 
 var app = builder.Build();
 
